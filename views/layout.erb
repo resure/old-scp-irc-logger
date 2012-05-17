@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SCPF IRC Logger</title>
+    <style>
+      body {
+      }
+
+      #content {
+        width: 600px;
+        background: #F6F6EF;
+        padding: 7px;
+        margin: 15px auto 10px auto;
+      }
+
+      #footer {
+        margin: 20px auto 5px auto;
+        text-align: center;
+        font-family: monospace;
+        font-size: 90%;
+        color: #666;
+      }
+
+      h1 {
+        text-align: center;
+        font-weight: normal;
+        font-size: 150%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <%= yield %>
+      <div id="footer">
+        &copy;&nbsp;SCP Foundation Networks
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+<h1>SCP Foundation IRC Logger</h1>
+
+<% @messages['rows'].each do |msg| %>
+  <a href="/<%= msg['id'] %>">#<%= msg['id'] %></a>
+  <br />
+<% end %>
