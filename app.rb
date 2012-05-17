@@ -2,7 +2,7 @@ require 'sinatra'
 require 'rest-client'
 require 'json'
 
-DB = ENV['CLOUDANT_URL' + '/history' || 'localhost:5984' + '/history'¬
+DB = ENV['CLOUDANT_URL' + '/history' || 'localhost:5984' + '/history'
 
 get '/' do
   doc = RestClient.get("#{DB}/_all_docs")
