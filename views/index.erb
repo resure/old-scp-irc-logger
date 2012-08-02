@@ -1,7 +1,7 @@
 <h1>SCP Foundation IRC Logger</h1>
 
 <% @messages['rows'].reverse.each do |msg| %>
-  <p style='border-bottom:1px dashed #aaa'>
+  <p style='border-bottom:1px dashed #aaa' id='<%= msg['id'] %>'>
     <div style='display:inline;float:left'>
       <strong><%= msg['doc']['name'] %></strong>
     </div>
