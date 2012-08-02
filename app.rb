@@ -5,11 +5,11 @@ require 'json'
 if ENV['CLOUDANT_URL']
   DB = ENV['CLOUDANT_URL'] + '/history'
 else
-  'localhost:5984' + '/history'
+  DB = 'localhost:5984' + '/history'
 end
 
 get '/' do
-  doc = RestClient.get("#{DB}/_all_docs")
+  doc = RestClient.get("#{DB}/_all_docs?include_docs=true")
   @messages = JSON.parse(doc)
   erb :index
 end

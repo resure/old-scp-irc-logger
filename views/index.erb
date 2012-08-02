@@ -1,6 +1,14 @@
 <h1>SCP Foundation IRC Logger</h1>
 
-<% @messages['rows'].each do |msg| %>
-  <a href="/<%= msg['id'] %>">#<%= msg['id'] %></a>
-  <br />
+<% @messages['rows'].reverse.each do |msg| %>
+  <p style='border-bottom:1px dashed #aaa'>
+    <div style='display:inline;float:left'>
+      <strong><%= msg['doc']['name'] %></strong>
+    </div>
+    <div style='display:inline;float:right'>
+      <a href="/<%= msg['id'] %>">#<%= msg['id'] %></a>
+    </div>
+    <div style='clear:both'></div>
+    <%= msg['doc']['content'] %>
+  </p>
 <% end %>
