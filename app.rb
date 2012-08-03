@@ -2,19 +2,17 @@ require 'sinatra'
 require 'rest-client'
 require 'json'
 
-# if ENV['CLOUDANT_URL']
-#   DB = ENV['CLOUDANT_URL'] + '/history'
-# else
-#   DB = 'localhost:5984' + '/history'
-# end
-
-DB = 'https://app4695911.heroku:HecgqPnwGJjNgIHsuJYGshbj@app4695911.heroku.cloudant.com/history'
+if ENV['CLOUDANT_URL']
+  DB = ENV['CLOUDANT_URL'] + '/history'
+else
+  DB = 'localhost:5984' + '/history'
+end
 
 get '/' do
   limit = 150
 
   total_messages = (JSON.parse (RestClient.get "#{DB}/_all_docs?limit=0"))['total_rows']
-  @total_pages = total_messages / limit
+  @total_pages = total_messages / limit + 1
 
   @page = params[:page].to_i.abs
   @page = @total_pages - 1 if @page > @total_pages - 1
@@ -24,6 +22,7 @@ get '/' do
 
   doc = RestClient.get query
   @messages = JSON.parse(doc)
+
   erb :index
 end
 
