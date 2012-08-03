@@ -1,10 +1,24 @@
-<h1>SCP Foundation #site7 logger</h1>
+<h1><a href="/">SCP Foundation #site7 logger</a></h1>
 
-<form action='/' method='GET' class='settings'>
-  Skip: <input type='text' name='skip' value='<%= params[:skip] %>' />
-  Limit: <input type='text' name='limit' value='<%= params[:limit] %>' />
-  <input type='submit' value='Show me' />
-</form>
+<div class='settings'>
+  <div class='left'>
+    <% if @page > 0 %>
+      <a href="/?page=<%= @page - 1 %>">&larr;&nbsp;previous</a>
+    <% end %>
+  </div>
+
+  <div style='text-align:center;display:inline'>
+    <em>Page <%= @page + 1 %>/<a href="/?page=<%= @total_pages - 1 %>"><%= @total_pages %></a></em>
+  </div>
+
+  <div class='right'>
+    <% if @page < @total_pages - 1 %>
+      <a href="/?page=<%= @page + 1 %>">next&nbsp;&rarr;</a>
+    <% end %>
+  </div>
+</div>
+
+<div class='clear'></div>
 
 <% @messages['rows'].each do |msg| %>
   <div class='message' id='<%= msg['id'] %>'>
