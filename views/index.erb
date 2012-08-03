@@ -1,10 +1,12 @@
 <h1>SCP Foundation #site7 logger</h1>
 
-<p style='text-align:center'>
-  <em><%= @messages['rows'].count %> messages</em>
-</p>
+<form action='/' method='GET' style='text-align:center'>
+  Skip: <input type='text' name='skip' value='<%= params[:skip] %>' />
+  Limit: <input type='text' name='limit' value='<%= params[:limit] %>' />
+  <input type='submit' value='Show me' />
+</form>
 
-<% @messages['rows'].reverse.each do |msg| %>
+<% @messages['rows'].each do |msg| %>
   <p class='message' id='<%= msg['id'] %>'>
     <div>
       <strong><%= msg['doc']['name'] %></strong>

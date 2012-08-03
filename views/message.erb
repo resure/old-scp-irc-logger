@@ -1,5 +1,5 @@
 <a href="/#<%= params['id'] %>">&larr; Back to the list</a><br /><br />
 <strong>Message #:</strong> <%= params[:id] %><br />
 <strong>Author:</strong> <%= @message['name'] %><br />
-<strong>Date:</strong> <%= Time.at(params['id'].to_i/1000) %>
+<strong>Date:</strong> <%= Time.at(params['id'].to_i/1000).strftime("%d.%m.%y %k:%M") %>
 <p><%= @message['content'] %></p>
