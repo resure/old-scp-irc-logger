@@ -1,17 +1,19 @@
 <h1>SCP Foundation #site7 logger</h1>
 
-<form action='/' method='GET' style='text-align:center'>
+<form action='/' method='GET' class='settings'>
   Skip: <input type='text' name='skip' value='<%= params[:skip] %>' />
   Limit: <input type='text' name='limit' value='<%= params[:limit] %>' />
   <input type='submit' value='Show me' />
 </form>
 
 <% @messages['rows'].each do |msg| %>
-  <p class='message' id='<%= msg['id'] %>'>
-    <div>
-      <strong><%= msg['doc']['name'] %></strong>
-      <a href="/<%= msg['id'] %>" class='message-link'><%= Time.at(msg['id'].to_i/1000).strftime("(%d.%m.%y %k:%M)") %></a>
+  <div class='message' id='<%= msg['id'] %>'>
+    <div class='info'>
+      <a href="/<%= msg['id'] %>" class='message-link' title='<%= Time.at(msg['id'].to_i/1000).strftime("%d.%m.%y %k:%M") %>'><%= msg['doc']['name'] %></a>
     </div>
-    <%= msg['doc']['content'] %>
-  </p>
+    <div class='text'>
+      <%= msg['doc']['content'] %>
+    </div>
+    <div class='clear'></div>
+  </div>
 <% end %>

@@ -4,11 +4,13 @@
     <title>SCPF IRC Logger</title>
     <style>
       body {
+        font-family: Verdana, "Lucida Grande", "Helvetica", "Arial", sans-serif;
+        font-size: 14px;
+        line-height: 18px;
       }
 
       #content {
-        width: 600px;
-        background: #F6F6EF;
+        width: 800px;
         padding: 7px;
         margin: 15px auto 10px auto;
       }
@@ -28,12 +30,35 @@
       }
 
       .message {
+        clear: both;
+        padding-bottom: 30px;
+      }
+
+      .info {
+        display: inline;
+        float: left;
+        margin: 0px 1% 0px 0px;
+        text-align: right;
+        word-wrap: break-word;
+        width: 14%;
+      }
+
+      .text {
+        display: inline;
+        position: relative;
+        width: 84%;
+        float: right;
       }
 
       .message-link {
         color: #aaa;
         font-size: 90%;
         text-decoration: none;
+      }
+
+      .settings {
+        text-align: center;
+        margin-bottom: 20px;
       }
     </style>
   </head>
