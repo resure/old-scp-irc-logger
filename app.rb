@@ -8,6 +8,10 @@ else
   DB = 'localhost:5984' + '/history'
 end
 
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  [username, password] == ['scpru', '682mustbefree']
+end
+
 get '/' do
   limit = 150
 
@@ -30,14 +34,4 @@ get '/:id' do
   message = RestClient.get("#{DB}/#{params[:id]}")
   @message = JSON.parse(message)
   erb :message
-end
-
-
-private
-
-def total_rows
-  doc = RestClient.get "#{DB}/_all_docs?limit=0"
-  json_doc = JSON.parse doc
-  
-  json_doc[:total_rows]
 end
